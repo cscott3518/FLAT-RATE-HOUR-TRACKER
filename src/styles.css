@@ -144,3 +144,12 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 button {
   white-space: nowrap; /* stops text from wrapping */
 }
+/* Target the Hours field container */
+.row .hours-field {
+  flex: 0 0 100px; /* fixed width for hours column */
+}
+
+/* Make description take remaining space */
+.row .description-field {
+  flex: 1; 
+}
