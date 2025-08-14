@@ -153,3 +153,10 @@ button {
 .row .description-field {
   flex: 1; 
 }
+@media (min-width: 900px) {
+  .add-job {
+    display: grid;
+    grid-template-columns: 160px 1fr 200px auto; /* last two numbers control Hours + Add button */
+    column-gap: 16px; /* space between columns */
+  }
+}
