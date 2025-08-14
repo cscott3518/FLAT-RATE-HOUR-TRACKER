@@ -129,3 +129,18 @@ tr:hover td { background: rgba(255,255,255,0.02); }
   color: var(--muted);
 }
 .hidden { display: none; }
+.row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center; /* ensures vertical alignment */
+}
+
+.row > * {
+  flex: 1; /* allows them to size nicely */
+  min-width: 120px; /* prevents collapsing */
+}
+
+button {
+  white-space: nowrap; /* stops text from wrapping */
+}
