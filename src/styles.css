@@ -48,3 +48,29 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .footer { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
 .pill { padding: 8px 10px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); }
 .hidden { display: none; }
+/* Filter row layout */
+.filters {
+  display: grid;
+  gap: 12px;
+}
+
+/* Desktop/tablet: nice single row */
+@media (min-width: 820px) {
+  .filters {
+    grid-template-columns: 1fr 180px 180px auto; /* Search | From | To | Buttons */
+    align-items: end;
+  }
+}
+
+/* Inputs & buttons inside the filter row */
+.field { min-width: 0; }            /* prevents overflow */
+.buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Make date pickers breathe */
+input[type="date"] { margin: 0; padding-right: 10px; }
+
+/* Optional: ensure all inputs same height */
+input[type='date'], input[type='text'] {
+  height: 44px;
+}
+button { height: 44px; }
