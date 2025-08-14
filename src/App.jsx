@@ -173,34 +173,39 @@ export default function App() {
 
       {/* Filters & Export */}
       <div className="card">
-        <div className="card-header">Filter & Export</div>
-        <div className="card-body row">
-          <div style={{flex: '1 1 220px'}}>
-            <label htmlFor="q">Search</label>
-            <input id="q" value={q} onChange={e=>setQ(e.target.value)} placeholder="Search RO or description" />
-          </div>
-          <div>
-            <label htmlFor="from">From</label>
-            <input id="from" type="date" value={from} onChange={e=>setFrom(e.target.value)} />
-          </div>
-          <div>
-            <label htmlFor="to">To</label>
-            <input id="to" type="date" value={to} onChange={e=>setTo(e.target.value)} />
-          </div>
-          <div className="row">
-            <button className="secondary" onClick={()=>setQuickRange('today')}>Today</button>
-            <button className="secondary" onClick={()=>setQuickRange('week')}>This Week</button>
-            <button className="secondary" onClick={()=>setQuickRange('month')}>This Month</button>
-            <button className="ghost" onClick={()=>setQuickRange('clear')}>Clear</button>
-          </div>
-          <div className="row">
-            <button onClick={exportCSV}>Export CSV</button>
-            <button onClick={exportJSON}>Export JSON</button>
-            <label className="pill" htmlFor="import">Import JSON</label>
-            <input id="import" className="hidden" type="file" accept="application/json,.json" onChange={(e)=>{ const f=e.target.files?.[0]; if (f) importJSON(f); e.currentTarget.value=''; }} />
-          </div>
-        </div>
+  <div className="card-header">Filter & Export</div>
+  <div className="card-body">
+    <div className="filters">
+      <div className="field">
+        <label htmlFor="q">Search</label>
+        <input id="q" value={q} onChange={e=>setQ(e.target.value)} placeholder="Search RO or description" />
       </div>
+
+      <div className="field">
+        <label htmlFor="from">From</label>
+        <input id="from" type="date" value={from} onChange={e=>setFrom(e.target.value)} />
+      </div>
+
+      <div className="field">
+        <label htmlFor="to">To</label>
+        <input id="to" type="date" value={to} onChange={e=>setTo(e.target.value)} />
+      </div>
+
+      <div className="buttons">
+        <button className="secondary" onClick={()=>setQuickRange('today')}>Today</button>
+        <button className="secondary" onClick={()=>setQuickRange('week')}>This Week</button>
+        <button className="secondary" onClick={()=>setQuickRange('month')}>This Month</button>
+        <button className="ghost" onClick={()=>setQuickRange('clear')}>Clear</button>
+        <button onClick={exportCSV}>Export CSV</button>
+        <button onClick={exportJSON}>Export JSON</button>
+        <label className="pill" htmlFor="import">Import JSON</label>
+        <input id="import" className="hidden" type="file" accept="application/json,.json"
+               onChange={(e)=>{ const f=e.target.files?.[0]; if (f) importJSON(f); e.currentTarget.value=''; }} />
+      </div>
+    </div>
+  </div>
+</div>
+
 
       {/* Table */}
       <div className="card">
