@@ -77,6 +77,7 @@ button {
   background: #0b1220;
   color: var(--text);
   cursor: pointer;
+  white-space: nowrap;
 }
 button.primary { background: var(--accent); color: #082417; border-color: #16a34a; }
 button.secondary { background: #0b1220; }
@@ -84,7 +85,7 @@ button.ghost { background: transparent; }
 button.danger { background: var(--danger); border-color: #b91c1c; color: #ffecec; }
 button:disabled { opacity: 0.6; cursor: not-allowed; }
 
-/* Filter row — tidy alignment */
+/* Filter row */
 .filters { display: grid; gap: 12px; }
 @media (min-width: 820px) {
   .filters {
@@ -92,15 +93,16 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
     align-items: end;
   }
 }
-.field { min-width: 0; } /* prevents overflow */
+.field { min-width: 0; }
 .field label { font-weight: 600; margin-bottom: 6px; }
 .buttons { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 
-/* Date inputs: ensure icon spacing looks clean */
+/* Date inputs */
 input[type="date"] { padding-right: 10px; }
 
-/* Add-Job row spacing */
-.row { display: flex; gap: 8px; flex-wrap: wrap; }
+/* Generic row helper */
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.row > * { flex: 1; min-width: 140px; }
 
 /* Table */
 table { width: 100%; border-collapse: collapse; }
@@ -112,13 +114,15 @@ th, td {
 th.right, td.right { text-align: right; }
 tr:hover td { background: rgba(255,255,255,0.02); }
 
-/* Footer row under table */
+/* Footer row */
 .footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 12px;
 }
+
+/* Pills / helpers */
 .pill {
   display: inline-flex;
   align-items: center;
@@ -129,34 +133,36 @@ tr:hover td { background: rgba(255,255,255,0.02); }
   color: var(--muted);
 }
 .hidden { display: none; }
-.row {
+
+/* ---------- Add Job layout: push Hours + buttons to far right ---------- */
+.add-row {
   display: flex;
-  gap: 8px;
+  align-items: flex-end;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Left: RO, Date, Description */
+.add-left {
+  display: flex;
   flex-wrap: wrap;
-  align-items: center; /* ensures vertical alignment */
+  gap: 12px;
+  flex: 1 1 auto;          /* take available space */
+}
+.add-left > div { min-width: 160px; }
+.add-left .grow { flex: 1 1 280px; } /* description expands */
+
+/* Right: Hours + Add + Reset */
+.add-right {
+  margin-left: auto;       /* <-- pushes group to far right */
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex: 0 0 auto;
 }
 
-.row > * {
-  flex: 1; /* allows them to size nicely */
-  min-width: 140px; /* prevents collapsing */
-}
-
-button {
-  white-space: nowrap; /* stops text from wrapping */
-}
-/* Target the Hours field container */
-.row .hours-field {
-  flex: 0 0 100px; /* fixed width for hours column */
-}
-
-/* Make description take remaining space */
-.row .description-field {
-  flex: 1; 
-}
-@media (min-width: 900px) {
-  .add-job {
-    display: grid;
-    grid-template-columns: 160px 1fr 200px auto; /* last two numbers control Hours + Add button */
-    column-gap: 16px; /* space between columns */
-  }
+/* Responsive: stack gracefully */
+@media (max-width: 800px) {
+  .add-row { flex-direction: column; align-items: stretch; }
+  .add-right { margin-left: 0; justify-content: flex-end; flex-wrap: wrap; }
 }
