@@ -166,3 +166,28 @@ tr:hover td { background: rgba(255,255,255,0.02); }
   .add-row { flex-direction: column; align-items: stretch; }
   .add-right { margin-left: 0; justify-content: flex-end; flex-wrap: wrap; }
 }
+
+/* --- Force the Add Job row to behave exactly as intended --- */
+.card .card-body .add-row { 
+  display: flex !important; 
+  align-items: flex-end !important; 
+  gap: 12px !important;
+  width: 100% !important;
+}
+
+.card .card-body .add-left { 
+  flex: 1 1 0 !important;   /* take remaining space */
+  min-width: 0;             /* allow shrinking so right side can reach edge */
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 12px;
+}
+
+.card .card-body .add-right { 
+  margin-left: auto !important;  /* push group to far right */
+  flex: 0 0 auto !important;
+  display: flex; 
+  align-items: flex-end; 
+  gap: 12px;
+}
+
