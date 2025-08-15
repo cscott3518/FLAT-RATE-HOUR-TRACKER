@@ -157,24 +157,58 @@ export default function App() {
       <div className="card">
         <div className="card-header">Add Job</div>
         <div className="card-body">
-          <div className="add-row">
-            {/* LEFT: RO + Date + Description */}
-            <div className="add-left">
-              <div>
-                <label htmlFor="ro">RO</label>
-                <input id="ro" value={ro} onChange={e=>setRo(e.target.value)} placeholder="RO #" />
-              </div>
+         <div className="card-body">
+ <div className="card-body">
+  <div className="add-row">
+    {/* LEFT: RO + Date + Description */}
+    <div className="add-left">
+      <div>
+        <label htmlFor="ro">RO</label>
+        <input id="ro" value={ro} onChange={e=>setRo(e.target.value)} placeholder="RO #" />
+      </div>
 
-              <div>
-                <label htmlFor="date">Date</label>
-                <input id="date" type="date" value={date} onChange={e=>setDate(e.target.value)} />
-              </div>
+      <div>
+        <label htmlFor="date">Date</label>
+        <input id="date" type="date" value={date} onChange={e=>setDate(e.target.value)} />
+      </div>
 
-              <div className="grow">
-                <label htmlFor="desc">Description</label>
-                <input id="desc" value={description} onChange={e=>setDescription(e.target.value)} placeholder="Job description" />
-              </div>
-            </div>
+      <div className="grow">
+        <label htmlFor="desc">Description</label>
+        <input id="desc" value={description} onChange={e=>setDescription(e.target.value)} placeholder="Job description" />
+      </div>
+    </div>
+
+    {/* RIGHT: Hours + Add + Reset */}
+    <div className="add-right">
+      <div>
+        <label htmlFor="hours">Hours Flagged</label>
+        <input
+          id="hours"
+          ref={hoursRef}
+          inputMode="decimal"
+          value={hours}
+          onChange={e=>setHours(e.target.value)}
+          placeholder="e.g. 2.5"
+        />
+      </div>
+
+      <button className="primary" onClick={addEntry}>Add Entry</button>
+      <button
+        className="secondary"
+        onClick={()=>{
+          setRo('');
+          setDate(new Date().toISOString().slice(0,10));
+          setDescription('');
+          setHours('');
+        }}
+      >
+        Reset Form
+      </button>
+    </div>
+  </div>
+</div>
+
+
 
             {/* RIGHT: Hours + Add + Reset (pinned right) */}
             <div className="add-right">
