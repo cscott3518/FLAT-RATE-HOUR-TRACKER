@@ -155,9 +155,7 @@ export default function App() {
 
       {/* Add Job */}
       <div className="card">
-        <div className="card-header">Add Job</div>
-        <div className="card-body">
-         <div className="card-body">
+        <div className="card-header">Add Job</div>             
  <div className="card-body">
   <div className="add-row">
     {/* LEFT: RO + Date + Description */}
