@@ -153,7 +153,7 @@ export default function App() {
         </div>
       </div>
 
-   {/* Add Job */}
+  {/* Add Job */}
 <div className="card">
   <div className="card-header">Add Job</div>
   <div className="card-body">
@@ -206,7 +206,6 @@ export default function App() {
     </div>
   </div>
 </div>
-
 
       {/* Filter & Export */}
       <div className="card">
